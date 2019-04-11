@@ -2,6 +2,10 @@ import React from 'react';
 import classes from './Layout.module.css';
 import Aux from '../../hoc/Auxiliary';
 
+/**
+ * Stateless function component
+ * Responsible for main application layout
+ */
 const layout = (props) => (
     <Aux>
         <div>Toolbar, SideDrawer, Backdrop</div>

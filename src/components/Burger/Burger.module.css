@@ -3,7 +3,8 @@
     margin: auto;
     height: 250px;
     /* if burger would be bigger > 250 px we can simply scroll it */
-    overflow: scroll;
+    /*overflow: scroll;*/
+    overflow-y: auto;
     text-align: center;
     font-weight: bold;
     /* it's scales default font-size the user selected */

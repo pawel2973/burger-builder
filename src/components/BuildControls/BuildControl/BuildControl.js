@@ -5,10 +5,20 @@ import classes from './BuildControl.module.css';
  *  Group of button used to manage specific ingredient
  */
 const buildControl = (props) => (
+
+
     <div className={classes.BuildControl}>
+        <span>[{props.count}]</span>
         <div className={classes.Label}>{props.label}</div>
-        <button className={classes.Less}>Less</button>
-        <button className={classes.More}>More</button>
+        <button
+            className={classes.Less}
+            onClick={props.removed}
+            disabled={props.disabled}> Less
+        </button>
+        <button
+            className={classes.More}
+            onClick={props.added}> More
+        </button>
     </div>
 );
 

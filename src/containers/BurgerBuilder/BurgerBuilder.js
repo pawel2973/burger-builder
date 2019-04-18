@@ -41,7 +41,6 @@ class BurgerBuilder extends Component {
         for (let key in ingredients) {
             sum = sum + ingredients[key];
         }
-        console.log('x= ' + sum);
 
         // const sum = Object.keys(ingredients)
         //     .map((igKey) => {

@@ -14,14 +14,23 @@ const withErrorHandler = (WrappedComponent, axios) => {
         // this code when this component here gets created.
         componentWillMount() {
             // whenever I send a request, I don't have my error set up anymore
-            axios.interceptors.request.use(req => {
+            this.reqInterceptor = axios.interceptors.request.use(req => {
                 this.setState({error: null});
                 return req;
             });
 
-            axios.interceptors.response.use(res => res, error => {
+            this.resInterceptor = axios.interceptors.response.use(res => res, error => {
                 this.setState({error: error});
             });
+        }
+
+        // This will just ensure that whenever we don't need e.g. BurgerBuilder component anymore
+        // that we clean up the interceptors which we attached due to using withErrorHandler
+        // in the burgerBuilder so that if we reuse withErrorHandler in our application, we don't
+        // create more and more interceptors with the old ones living on.
+        componentWillUnmount() {
+            axios.interceptors.request.eject(this.reqInterceptor);
+            axios.interceptors.response.eject(this.resInterceptor);
         }
 
         errorConfirmedHandler = () => {

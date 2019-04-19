@@ -8,7 +8,11 @@ const withErrorHandler = (WrappedComponent, axios) => {
             error: null
         };
 
-        componentDidMount() {
+        // This will be called before the child components are rendered.
+        // In the future, this React lifecycle hook will not be supported anymore.
+        // Just use the constructor because the general idea here is that we execute
+        // this code when this component here gets created.
+        componentWillMount() {
             // whenever I send a request, I don't have my error set up anymore
             axios.interceptors.request.use(req => {
                 this.setState({error: null});
